@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="14" master_id="0" name="Initial Foothold" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742902603" ts_lastsave="1742903555">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Nibbles - Initial Foothold</rich_text>
+    <rich_text>
+
+
+Now that we are logged in to the admin portal, we need to attempt to  turn this access into code execution and ultimately gain reverse shell  access to the webserver. 
+We know a </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text> module will  likely work for this, but let us enumerate the admin portal for other  avenues of attack. Looking around a bit, we see the following pages:
+
+
+
+Attempting to make a new page and embed code or upload files does not seem like the path. Let us check out the plugins page.
+
+
+We get a bunch of errors, but it seems like the file may have uploaded.
+
+
+
+Now we have to find out where the file uploaded if it was successful.  Going back to the directory brute-forcing results, we remember the </rich_text>
+    <rich_text family="monospace">/content</rich_text>
+    <rich_text> directory. 
+Under this, there is a </rich_text>
+    <rich_text family="monospace">plugins</rich_text>
+    <rich_text> directory and another subdirectory for </rich_text>
+    <rich_text family="monospace">my_image</rich_text>
+    <rich_text>. The full path is at </rich_text>
+    <rich_text family="monospace" link="webs http://&lt;host&gt;/nibbleblog/content/private/plugins/my_image/">http://&lt;host&gt;/nibbleblog/content/private/plugins/my_image/</rich_text>
+    <rich_text>.
+ In this directory, we see two files, </rich_text>
+    <rich_text family="monospace">db.xml</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">image.php</rich_text>
+    <rich_text>, with a recent last modified date, meaning that our upload was successful! Let us check and see if we have command execution.
+
+
+
+We do! It looks like we have gained remote code execution on the web server, and the Apache server is running in the </rich_text>
+    <rich_text family="monospace">nibbler</rich_text>
+    <rich_text> user context. Let us modify our PHP file to obtain a reverse shell and start poking around the server.
+
+Let us use the following </rich_text>
+    <rich_text family="monospace">Bash</rich_text>
+    <rich_text> reverse shell one-liner and add it to our </rich_text>
+    <rich_text family="monospace">PHP</rich_text>
+    <rich_text> script.
+
+
+
+We will add our </rich_text>
+    <rich_text family="monospace">tun0</rich_text>
+    <rich_text> VPN IP address in the </rich_text>
+    <rich_text family="monospace">&lt;ATTACKING IP&gt;</rich_text>
+    <rich_text> placeholder and a port of our choice for </rich_text>
+    <rich_text family="monospace">&lt;LISTENING PORT&gt;</rich_text>
+    <rich_text> to catch the reverse shell on our </rich_text>
+    <rich_text family="monospace">netcat</rich_text>
+    <rich_text> listener. See the edited </rich_text>
+    <rich_text family="monospace">PHP</rich_text>
+    <rich_text> script below.
+
+
+
+We upload the file again and start a </rich_text>
+    <rich_text family="monospace">netcat</rich_text>
+    <rich_text> listener in our terminal:
+
+
+
+
+</rich_text>
+    <rich_text family="monospace">cURL</rich_text>
+    <rich_text> the image page again or browse to it in </rich_text>
+    <rich_text family="monospace">Firefox</rich_text>
+    <rich_text> at http://nibbleblog/content/private/plugins/my_image/image.php to execute the reverse shell.
+
+
+
+Furthermore, we have a reverse shell. Before we move forward with  additional enumeration, let us upgrade our shell to a "nicer" shell  since the shell that we caught is not a fully interactive TTY and  specific 
+commands such as </rich_text>
+    <rich_text family="monospace">su</rich_text>
+    <rich_text> will not work, we cannot use text editors, tab-completion does not work, etc. This </rich_text>
+    <rich_text link="webs https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/">post</rich_text>
+    <rich_text> explains the issue further as well as a variety of ways to upgrade to a fully interactive TTY. 
+For our purposes, we will use a </rich_text>
+    <rich_text family="monospace">Python</rich_text>
+    <rich_text> one-liner to spawn a pseudo-terminal so commands such as </rich_text>
+    <rich_text family="monospace">su</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">sudo</rich_text>
+    <rich_text> work as discussed previously in this Module.
+
+Try the various techniques for upgrading to a full TTY and pick one that works best for you. Our first attempt fails as </rich_text>
+    <rich_text family="monospace">Python2</rich_text>
+    <rich_text> seems to be missing from the system!
+
+We have </rich_text>
+    <rich_text family="monospace">Python3</rich_text>
+    <rich_text> though, which works to get us to a friendlier shell by typing </rich_text>
+    <rich_text family="monospace">python3 -c 'import pty; pty.spawn("/bin/bash")'</rich_text>
+    <rich_text>. Browsing to </rich_text>
+    <rich_text family="monospace">/home/nibbler</rich_text>
+    <rich_text>, we find the </rich_text>
+    <rich_text family="monospace">user.txt</rich_text>
+    <rich_text> flag as well as a zip file </rich_text>
+    <rich_text family="monospace">personal.zip</rich_text>
+    <rich_text>.
+
+</rich_text>
+    <encoded_png char_offset="373" justification="left" link="" sha256sum="ec1447f48769a2892f2ab87c3ed2ba316f24bf2dce34d17521176863ef2b5e4e"/>
+    <encoded_png char_offset="501" justification="left" link="" sha256sum="9bbfe9cc33aa3a372048e63c8b78143f864a11689cee14ace183d362444af4e9"/>
+    <encoded_png char_offset="577" justification="left" link="" sha256sum="7b28e2ae381656f9764c099d33b683edd935700b5a67dfc05d3e1bab1100f5ff"/>
+    <encoded_png char_offset="1085" justification="left" link="" sha256sum="de67c9fccf83c6c765d3c5fd92d643aec1f633a52538937a2a7e9d7e02530c2e"/>
+    <encoded_png char_offset="1402" justification="left" link="" sha256sum="c088f4ed663a4d57589ef4ce92bd86766cdb606108b113c83928dce490036319"/>
+    <encoded_png char_offset="1606" justification="left" link="" sha256sum="fa486efc421eff187187873742c5cc7088222bf76b4a01af1154d5565ada3ed9"/>
+    <encoded_png char_offset="1680" justification="left" link="" sha256sum="f60ecfd620d0707d198d1736da5b753c9e1f36a2b78dd00db5885495137b2de9"/>
+    <encoded_png char_offset="1831" justification="left" link="" sha256sum="62a732bf38670f9fedfcf9d18304b9665372d06f683e15d3aac00dcd7df06703"/>
+  </node>
+</cherrytree>

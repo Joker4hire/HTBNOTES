@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="8" master_id="0" name="Shells" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742649461" ts_lastsave="1742990131">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Types of Shells</rich_text>
+    <rich_text>
+
+Once we compromise a system and exploit a vulnerability to execute commands 
+on the compromised hosts remotely, we usually need a method of communicating 
+with the system not to have to keep exploiting the same vulnerability to execute each 
+command. To enumerate the system or take further control over it or within its network, 
+we need a reliable connection that gives us direct access to the system's shell, i.e., </rich_text>
+    <rich_text family="monospace">Bash</rich_text>
+    <rich_text> or 
+</rich_text>
+    <rich_text family="monospace">PowerShell</rich_text>
+    <rich_text>, so we can thoroughly investigate the remote system for our next move.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Reverse Shell</rich_text>
+    <rich_text>
+
+A </rich_text>
+    <rich_text family="monospace">Reverse Shell</rich_text>
+    <rich_text> is the most common type of shell, as it is the quickest and easiest method to obtain control over a compromised host. 
+Once we identify a vulnerability on the remote host that allows remote code execution, we can start a </rich_text>
+    <rich_text family="monospace">netcat</rich_text>
+    <rich_text> listener on our machine 
+that listens on a specific port, say port </rich_text>
+    <rich_text family="monospace">1234</rich_text>
+    <rich_text>. With this listener in place, we can execute a </rich_text>
+    <rich_text family="monospace">reverse shell command</rich_text>
+    <rich_text> that connects the 
+remote systems shell, i.e., </rich_text>
+    <rich_text family="monospace">Bash</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">PowerShell</rich_text>
+    <rich_text> to our </rich_text>
+    <rich_text family="monospace">netcat</rich_text>
+    <rich_text> listener, which gives us a reverse connection over the remote system.
+
+
+
+</rich_text>
+    <rich_text scale="h4">Netcat Listener</rich_text>
+    <rich_text>
+
+The first step is to start a </rich_text>
+    <rich_text family="monospace">netcat</rich_text>
+    <rich_text> listener on a port of our choosing:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+The flags we are using are the following:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h4">Connect Back IP</rich_text>
+    <rich_text>
+
+However, first, we need to find our system's IP to send a reverse  connection back to us. We can find our IP with the following command:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+In our example, the IP we are interested in is under </rich_text>
+    <rich_text family="monospace">tun0</rich_text>
+    <rich_text>, which is the same HTB network we connected to through our VPN.
+
+
+
+</rich_text>
+    <rich_text scale="h4">Reverse Shell Command</rich_text>
+    <rich_text>
+
+The command we execute depends on what operating system the  compromised host runs on, i.e., Linux or Windows, and what 
+applications  and commands we can access. The </rich_text>
+    <rich_text link="webs https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/">Payload All The Things</rich_text>
+    <rich_text>  page has a comprehensive list of reverse shell commands 
+we can use that  cover a wide range of options depending on our compromised host.
+
+
+Certain reverse shell commands are more reliable than others and can  usually be attempted to get a reverse connection. 
+The below commands are  reliable commands we can use to get a reverse connection, for </rich_text>
+    <rich_text family="monospace">bash</rich_text>
+    <rich_text> on Linux compromised hosts and </rich_text>
+    <rich_text family="monospace">Powershell</rich_text>
+    <rich_text> on Windows compromised hosts:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+We can utilize the exploit we have over the remote host to execute  one of the above commands, i.e., through a Python exploit or a  Metasploit module, 
+to get a reverse connection. Once we do, we should  receive a connection in our </rich_text>
+    <rich_text family="monospace">netcat</rich_text>
+    <rich_text> listener:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+</rich_text>
+    <rich_text scale="h2">Bind Shell</rich_text>
+    <rich_text>
+
+
+Another type of shell is a </rich_text>
+    <rich_text family="monospace">Bind Shell</rich_text>
+    <rich_text>. Unlike a </rich_text>
+    <rich_text family="monospace">Reverse Shell</rich_text>
+    <rich_text> that connects to us, we will have to connect to it on the </rich_text>
+    <rich_text family="monospace">targets'</rich_text>
+    <rich_text> listening port.
+
+Once we execute a </rich_text>
+    <rich_text family="monospace">Bind Shell Command</rich_text>
+    <rich_text>, it will start listening on a port on the remote host and bind that host's shell, i.e., </rich_text>
+    <rich_text family="monospace">Bash</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">PowerShell</rich_text>
+    <rich_text>, to that port. We have to connect to that port with </rich_text>
+    <rich_text family="monospace">netcat</rich_text>
+    <rich_text>, and we will get control through a shell on that system.
+
+</rich_text>
+    <encoded_png char_offset="1172" justification="left" link="" sha256sum="48f5d8d6204d75fc199a351b5b436b3bf31a56cfc530f9ae0d9e4e9b0a7d0dd3"/>
+    <encoded_png char_offset="1218" justification="left" link="" sha256sum="fd3ae9f35cfd70457cbf915595e19809e1cb6e433ed48f84b4c70624f718bc77"/>
+    <encoded_png char_offset="1376" justification="left" link="" sha256sum="eb9d3274ae7ca0ee535c2b8b9a09c675a66385f196d093dbc370cc6f22b9173a"/>
+    <encoded_png char_offset="2143" justification="left" link="" sha256sum="1f7e4118699d47249c8285817074da2f50bfaefe6b6cfc85b30bafd034f5cecc"/>
+    <encoded_png char_offset="2396" justification="left" link="" sha256sum="9405c98aa53d5a6be9ff67b88a59d87a2ed4bf15211a99fdb1e22f54622570e2"/>
+  </node>
+</cherrytree>

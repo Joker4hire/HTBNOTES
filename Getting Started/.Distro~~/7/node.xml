@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="7" master_id="0" name="Public Expoits" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742552072" ts_lastsave="1742598681">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Public Exploits</rich_text>
+    <rich_text>
+
+
+Once we identify the services running on ports identified from our </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> scan, 
+the first step is to look if any of the applications/services have any public exploits. 
+Public exploits can be found for web applications and other applications running 
+on open ports, like </rich_text>
+    <rich_text family="monospace">SSH</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">ftp</rich_text>
+    <rich_text>.
+
+
+</rich_text>
+    <rich_text scale="h2">Finding Public Exploits</rich_text>
+    <rich_text>
+
+Many tools can help us search for public exploits for the various  applications and services we may encounter during the enumeration phase.  One way is to Google for the application name with </rich_text>
+    <rich_text family="monospace">exploit</rich_text>
+    <rich_text> to see if we get any results:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+</rich_text>
+    <rich_text scale="h2">Searchsploit</rich_text>
+    <rich_text>
+
+A well-known tool for this purpose is </rich_text>
+    <rich_text family="monospace">searchsploit</rich_text>
+    <rich_text>,  which we can use to search for public vulnerabilities/exploits for any  application.  We can use </rich_text>
+    <rich_text family="monospace">searchsploit</rich_text>
+    <rich_text> to search for a specific application by its name, as follows:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+We can also utilize online exploit databases to search for vulnerabilities, like </rich_text>
+    <rich_text link="webs https://www.exploit-db.com">Exploit DB</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text link="webs https://www.rapid7.com/db/">Rapid7 DB</rich_text>
+    <rich_text>, or </rich_text>
+    <rich_text link="webs https://www.vulnerability-lab.com">Vulnerability Lab</rich_text>
+    <rich_text>. The </rich_text>
+    <rich_text link="webs https://academy.hackthebox.com/module/details/75">Intro to Web Applications</rich_text>
+    <rich_text> module discusses public vulnerabilities for web applications.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Metasploit Primer</rich_text>
+    <rich_text>
+
+
+The Metasploit Framework (MSF) is an excellent tool for pentesters.  It contains many built-in exploits for many public vulnerabilities and  provides an easy way to use these exploits against vulnerable targets.  MSF has many other features, like:
+• Running reconnaissance scripts to enumerate remote hosts and compromised targets
+
+• Verification scripts to test the existence of a vulnerability without actually compromising the target
+
+• Meterpreter, which is a great tool to connect to shells and run commands on the compromised targets
+
+• Many post-exploitation and pivoting tools
+
+
+Let us take a basic example of searching for an exploit for an application we are attacking and how to exploit it. To run </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text>, we can use the </rich_text>
+    <rich_text family="monospace">msfconsole</rich_text>
+    <rich_text> command:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+Once we have </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text> running, we can search for our target application with the </rich_text>
+    <rich_text family="monospace">search exploit</rich_text>
+    <rich_text> command. For example, we can search for the SMB vulnerability we identified previously:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+QUESTIONS
+
+went to the site found out that the version of the site was Wordpress 2.7.10 so we could exploit scanner/http/wp_simple_backup_file_read to get a file 
+so i tried seting rho</rich_text>
+    <encoded_png char_offset="558" justification="left" link="" sha256sum="d465db755c3868f4d3bf4078a424de2e8787478dcc917c3edbe4acabd9e39ea7"/>
+    <encoded_png char_offset="802" justification="left" link="" sha256sum="68799f0df193e67ed99a71f91c8f22c7d9630e81960c4f83986c698c61dbc6eb"/>
+    <encoded_png char_offset="1803" justification="left" link="" sha256sum="5260ec94e527323194a5e806bc94f65be720c4998273b3937e375729464f5d3d"/>
+    <encoded_png char_offset="1993" justification="left" link="" sha256sum="62f65e94ba10eb02d131d4f4910aeb61191aca26f292603b0dfa25836abfb9cc"/>
+  </node>
+</cherrytree>

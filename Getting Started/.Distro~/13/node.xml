@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="13" master_id="0" name="Web Footprinting" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742816982" ts_lastsave="1742902603">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Nibbles - Web Footprinting</rich_text>
+    <rich_text>
+
+
+We can use </rich_text>
+    <rich_text family="monospace">whatweb</rich_text>
+    <rich_text> to try to identify the web application in use.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+The HTML comment mentions a directory named </rich_text>
+    <rich_text family="monospace">nibbleblog</rich_text>
+    <rich_text>. Let us check this with </rich_text>
+    <rich_text family="monospace">whatweb</rich_text>
+    <rich_text>.
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+Now we are starting to get a better picture of things. We can see some of the technologies in use such as </rich_text>
+    <rich_text link="webs https://en.wikipedia.org/wiki/HTML5">HTML5</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text link="webs https://en.wikipedia.org/wiki/JQuery">jQuery</rich_text>
+    <rich_text>, and </rich_text>
+    <rich_text link="webs https://en.wikipedia.org/wiki/PHP">PHP</rich_text>
+    <rich_text>. We can also see that the site is running </rich_text>
+    <rich_text link="webs https://www.nibbleblog.com/">Nibbleblog</rich_text>
+    <rich_text>, which is a free blogging engine built using PHP.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Directory Enumeration</rich_text>
+    <rich_text>
+
+
+Browsing to the </rich_text>
+    <rich_text family="monospace">/nibbleblog</rich_text>
+    <rich_text> directory in </rich_text>
+    <rich_text family="monospace">Firefox</rich_text>
+    <rich_text>, we do not see anything exciting on the main page.
+
+
+A quick Google search for "nibbleblog exploit" yields this </rich_text>
+    <rich_text link="webs https://www.rapid7.com/db/modules/exploit/multi/http/nibbleblog_file_upload/">Nibbleblog File Upload Vulnerability</rich_text>
+    <rich_text>. The flaw allows an authenticated attacker to upload and execute arbitrary PHP code on the underlying web server. 
+The </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text> module in question works for version </rich_text>
+    <rich_text family="monospace">4.0.3</rich_text>
+    <rich_text>. We do not know the exact version of </rich_text>
+    <rich_text family="monospace">Nibbleblog</rich_text>
+    <rich_text> in use yet, but it is a good bet that it is vulnerable to this. If we look at the source code of the
+ </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text> module, we can see that the exploit uses user-supplied credentials to authenticate the admin portal at </rich_text>
+    <rich_text family="monospace">/admin.php</rich_text>
+    <rich_text>.
+
+
+Let us use </rich_text>
+    <rich_text link="webs https://github.com/OJ/gobuster">Gobuster</rich_text>
+    <rich_text> to be thorough and check for any other accessible pages/directories.
+
+
+
+
+
+</rich_text>
+    <rich_text family="monospace">Gobuster</rich_text>
+    <rich_text> finishes very quickly and confirms the presence of the </rich_text>
+    <rich_text family="monospace">admin.php</rich_text>
+    <rich_text> page. We can check the </rich_text>
+    <rich_text family="monospace">README</rich_text>
+    <rich_text> page for interesting information, such as the version number.
+
+
+
+
+
+So we validate that version 4.0.3 is in use, confirming that this version is likely vulnerable to the </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text> module (though this could be an old </rich_text>
+    <rich_text family="monospace">README</rich_text>
+    <rich_text> page). Nothing else interesting pops out at us. Let us check out the admin portal login page.
+
+
+
+
+
+Now, to use the exploit mentioned above, we will need valid admin  credentials. We can try some authorization bypass techniques and common  credential pairs manually, such as </rich_text>
+    <rich_text family="monospace">admin:admin</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">admin:password</rich_text>
+    <rich_text>,  
+to no avail. There is a reset password function, but we receive an  e-mail error. Also, too many login attempts too quickly trigger a  lockout with the message </rich_text>
+    <rich_text family="monospace">Nibbleblog security error - Blacklist protection</rich_text>
+    <rich_text>.
+
+
+Let us go back to our directory brute-forcing results. The </rich_text>
+    <rich_text family="monospace">200</rich_text>
+    <rich_text> status codes show pages/directories that are directly accessible. The </rich_text>
+    <rich_text family="monospace">403</rich_text>
+    <rich_text> status codes in the output indicate that access to these resources is forbidden.
+ Finally, the </rich_text>
+    <rich_text family="monospace">301</rich_text>
+    <rich_text> is a permanent redirect. Let us explore each of these. Browsing to </rich_text>
+    <rich_text family="monospace">nibbleblog/themes/</rich_text>
+    <rich_text>.  We can see that directory listing is enabled on the web application.  Maybe we can find something interesting while poking around?
+
+
+Browsing to </rich_text>
+    <rich_text family="monospace">nibbleblog/content</rich_text>
+    <rich_text> shows some interesting subdirectories </rich_text>
+    <rich_text family="monospace">public</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">private</rich_text>
+    <rich_text>, and </rich_text>
+    <rich_text family="monospace">tmp</rich_text>
+    <rich_text>. Digging around for a while, we find a </rich_text>
+    <rich_text family="monospace">users.xml</rich_text>
+    <rich_text>  
+file which at least seems to confirm the username is indeed admin. It  also shows blacklisted IP addresses. We can request this file with </rich_text>
+    <rich_text family="monospace">cURL</rich_text>
+    <rich_text> and prettify the </rich_text>
+    <rich_text family="monospace">XML</rich_text>
+    <rich_text> output using </rich_text>
+    <rich_text link="webs https://linux.die.net/man/1/xmllint">xmllint</rich_text>
+    <rich_text>.
+
+
+
+At this point, we have a valid username but no password. Searches of  Nibbleblog related documentation show that the password is set during  installation, and there is no known default password. Up to this point,  have the following pieces of the puzzle:
+• A Nibbleblog install potentially vulnerable to an authenticated file upload vulnerability
+
+• An admin portal at </rich_text>
+    <rich_text family="monospace">nibbleblog/admin.php</rich_text>
+    <rich_text>
+
+• Directory listing which confirmed that </rich_text>
+    <rich_text family="monospace">admin</rich_text>
+    <rich_text> is a valid username
+
+• Login brute-forcing protection blacklists our IP address after too  many invalid login attempts. This takes login brute-forcing with a tool  such as </rich_text>
+    <rich_text link="webs https://github.com/vanhauser-thc/thc-hydra">Hydra</rich_text>
+    <rich_text> off the table
+
+
+There are no other ports open, and we did not find any other  directories. Which we can confirm by performing additional directory  brute-forcing against the root of the web application
+
+
+
+
+Taking another look through all of the exposed directories, we find a </rich_text>
+    <rich_text family="monospace">config.xml</rich_text>
+    <rich_text> file.
+
+
+
+
+Checking it, hoping for passwords proofs fruitless, but we do see two mentions of </rich_text>
+    <rich_text family="monospace">nibbles</rich_text>
+    <rich_text>  in the site title as well as the notification e-mail address. This is  also the name of the box. Could this be the admin password?
+
+
+When performing password cracking offline with a tool such as </rich_text>
+    <rich_text family="monospace">Hashcat</rich_text>
+    <rich_text>  or attempting to guess a password, it is important to consider all of  the information in front of us. It is not uncommon to successfully crack  a 
+password hash (such as a company's wireless network passphrase) using  a wordlist generated by crawling their website using a tool such as </rich_text>
+    <rich_text link="webs https://github.com/digininja/CeWL">CeWL</rich_text>
+    <rich_text>.
+
+
+This shows us how crucial thorough enumeration is. Let us recap what we have found so far:
+
+This proves that we need a clear, repeatable process that we will use time and time again, no matter if we are attacking a single box on HTB, performing a web application penetration test for a client, or attacking a large Active Directory environment. Keep in mind that iterative enumeration, along with detailed notetaking, is one of the keys to success in this field. As you progress in your career, you will often marvel at how the initial scope of a penetration test seemed extremely small and "boring," yet once you dig in and perform rounds and rounds of enumeration and peel back the layers, you may find an exposed service on a high port or some forgotten page or directory that can lead to sensitive data exposure or even a foothold.</rich_text>
+    <encoded_png char_offset="97" justification="left" link="" sha256sum="3b286b33647f93f8ff3c94e18132a0f0b72d1262c69f90f69d7f3f56ffd5671c"/>
+    <encoded_png char_offset="101" justification="left" link="" sha256sum="12cd57cc894ea021d3fe35d77a383a2d2ae12d416eabef324a24294e572b48cc"/>
+    <encoded_png char_offset="192" justification="left" link="" sha256sum="8d19db16f38857ab32a7f721018aa910d0175d15983aeb51a941e6d91f6e4ced"/>
+    <encoded_png char_offset="1196" justification="left" link="" sha256sum="8cfa055dbcaf3a9ac8bc00ae1c4734b87179cf7b86ba65d04f68a366d0f3bc70"/>
+    <encoded_png char_offset="1367" justification="left" link="" sha256sum="52635617b2ee47f5d451dd9b1f5cdfa6de8a34e58e3bd3a8a0573a55b46fc336"/>
+    <encoded_png char_offset="1624" justification="left" link="" sha256sum="be87e1116dc6b5b891c1ae6628f68c188d1c267494720c28e43938d751b81be7"/>
+    <encoded_png char_offset="2504" justification="left" link="" sha256sum="1aa1bd7b54574ab6be07513fdc97fe14c678445763b4695ebcb9a772ee8e0789"/>
+    <encoded_png char_offset="2838" justification="left" link="" sha256sum="9939ba6e667f093417ff798e9c721711d74ee1fc229f60c9d361de3561842cbd"/>
+    <encoded_png char_offset="3662" justification="left" link="" sha256sum="b090d9b3cc64d25a753d085331b5e0b17e808a9d68bdd392416d22ebaac5809c"/>
+    <encoded_png char_offset="3754" justification="left" link="" sha256sum="cc7571b6efc82948bee53675c0f2b061a016432068d858a72e4f0249a114e2be"/>
+  </node>
+</cherrytree>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="6" master_id="0" name="Web Enumeration" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742550668" ts_lastsave="1742990120">
+    <rich_text>When performing service scanning, we will often run into web servers  
+running on ports 80 and 443. Webservers host web applications (sometimes  more than 1)
+which often provide a considerable attack surface and a  very high-value target during a penetration test. 
+Proper web enumeration  is critical, especially when an organization is not exposing many  
+services or those services are appropriately patched.
+ 
+ 
+</rich_text>
+    <rich_text scale="h2">Gobuster</rich_text>
+    <rich_text>
+
+After discovering a web application, it is always worth checking to  
+see if we can uncover any hidden files or directories on the webserver  
+that are not intended for public access. We can use a tool such as </rich_text>
+    <rich_text link="webs https://github.com/ffuf/ffuf">ffuf</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text link="webs https://github.com/OJ/gobuster">GoBuster</rich_text>
+    <rich_text>  
+to perform this directory enumeration. Sometimes we will find hidden  functionality or 
+pages/directories exposing sensitive data that can be  leveraged to access 
+the web application or even remote code execution on  the web server itself.
+
+
+
+</rich_text>
+    <rich_text scale="h4">Directory/File Enumeration</rich_text>
+    <rich_text>
+
+GoBuster is a versatile tool that allows for performing DNS, vhost,  and directory brute-forcing. 
+The tool has additional functionality, such  as enumeration of public AWS S3 buckets. 
+For this module's purposes, we  are interested in the directory (and file) brute-forcing modes  
+specified with the switch </rich_text>
+    <rich_text family="monospace">dir</rich_text>
+    <rich_text>. Let us run a simple scan using the </rich_text>
+    <rich_text family="monospace">dirb</rich_text>
+    <rich_text> </rich_text>
+    <rich_text family="monospace">common.txt</rich_text>
+    <rich_text> wordlist.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+An HTTP status code of </rich_text>
+    <rich_text family="monospace">200</rich_text>
+    <rich_text> reveals that the resource's  request was successful, 
+while a 403 HTTP status code indicates that we  are forbidden to access the resource. 
+A 301 status code indicates that  we are being redirected, which is not a failure case. 
+It is worth  familiarizing ourselves with the various HTTP status codes, which can be
+found </rich_text>
+    <rich_text link="webs https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">here</rich_text>
+    <rich_text>. The </rich_text>
+    <rich_text family="monospace">Web Requests</rich_text>
+    <rich_text> Academy Module also covers HTTP status codes further in-depth.
+
+
+
+</rich_text>
+    <rich_text scale="h4">DNS Subdomain Enumeration</rich_text>
+    <rich_text>
+
+There also may be essential resources hosted on subdomains, such as  
+admin panels or applications with additional functionality that could be  
+exploited. We can use </rich_text>
+    <rich_text family="monospace">GoBuster</rich_text>
+    <rich_text> to enumerate available subdomains of 
+a given domain using the </rich_text>
+    <rich_text family="monospace">dns</rich_text>
+    <rich_text> flag to specify DNS mode. First, let 
+us clone the SecLists GitHub </rich_text>
+    <rich_text link="webs https://github.com/danielmiessler/SecLists">repo</rich_text>
+    <rich_text>, which contains many useful lists for fuzzing and exploitation:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+</rich_text>
+    <rich_text scale="h2">Web Enumeration Tips</rich_text>
+    <rich_text>
+
+Let us walk through a few additional web enumeration tips that will help complete machines on HTB and in the real world.
+
+
+</rich_text>
+    <rich_text scale="h4">Banner Grabbing / Web Server Headers</rich_text>
+    <rich_text>
+
+In the last section, we discussed banner grabbing for general 
+purposes. Web server headers provide a good picture of what
+is hosted on  a web server. They can reveal the specific application 
+framework in  use, the authentication options, and whether the 
+server is missing  essential security options or has been misconfigured. 
+We can use </rich_text>
+    <rich_text family="monospace">cURL</rich_text>
+    <rich_text> to retrieve server header information from the command 
+line. </rich_text>
+    <rich_text family="monospace">cURL</rich_text>
+    <rich_text> is another essential addition to our penetration testing toolkit, 
+and familiarity with its many options is encouraged.
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">Whatweb</rich_text>
+    <rich_text>
+
+We can extract the version of web servers, supporting frameworks, and applications using the command-line tool </rich_text>
+    <rich_text family="monospace">whatweb</rich_text>
+    <rich_text>. This information can help us pinpoint the technologies in use and begin to search for potential vulnerabilities.
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">Certificates</rich_text>
+    <rich_text>
+
+SSL/TLS certificates are another potentially valuable source of information if HTTPS is in use. 
+Browsing to </rich_text>
+    <rich_text family="monospace">https://10.10.10.121/</rich_text>
+    <rich_text>  and viewing the certificate reveals the details below, 
+including the  email address and company name. These could potentially be used to  
+conduct a phishing attack if this is within the scope of an assessment.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">Robots.txt</rich_text>
+    <rich_text>
+
+
+It is common for websites to contain a </rich_text>
+    <rich_text family="monospace">robots.txt</rich_text>
+    <rich_text> file, whose purpose is to instruct search engine 
+web crawlers such as Googlebot which resources can and cannot be accessed for indexing. 
+The </rich_text>
+    <rich_text family="monospace">robots.txt</rich_text>
+    <rich_text> file can provide valuable information such as the location of private files 
+and admin pages. In this case, we see that the </rich_text>
+    <rich_text family="monospace">robots.txt</rich_text>
+    <rich_text> file contains two disallowed entries.
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h4">Source Code</rich_text>
+    <rich_text>
+
+It is also worth checking the source code for any web pages we come across. 
+We can hit </rich_text>
+    <rich_text family="monospace">[CTRL + U]</rich_text>
+    <rich_text> to bring up the source code window in a browser. 
+This example reveals a developer comment containing credentials for a test 
+account, which could be used to log in to the website.
+
+
+
+</rich_text>
+    <rich_text scale="h4">Questions</rich_text>
+    <rich_text>
+
+Try running some of the web enumeration techniques you learned in this section on the server above, and use the info you get to get the flag.
+
+login subdomain : /admin-login-page.php found on robots.txt
+lgin credentials : admin/password123 found in source code of login page
+
+
+</rich_text>
+    <encoded_png char_offset="1303" justification="left" link="" sha256sum="4a963d1def209dd556cebe8b0151270acef10f83822146dde8deebc4887d04aa"/>
+    <encoded_png char_offset="2150" justification="left" link="" sha256sum="d7bc0e3ff9a7a71a951904592a92be3cd745dc592821a6534e64f64570cf1fd7"/>
+    <encoded_png char_offset="2872" justification="left" link="" sha256sum="25c611eadbc2722d92caeccb56c891556223b0861da47c129ef773e5bcd20e98"/>
+    <encoded_png char_offset="3120" justification="left" link="" sha256sum="d09be72a48b9cb2bb5fc48d47986ba6219ad69a57c98a9c56014438b970a946a"/>
+    <encoded_png char_offset="3485" justification="left" link="" sha256sum="278fab1fa72bd1f3788e072e9b09a3026fe6c4ef8436aeb7a37097e180b1a9e3"/>
+    <encoded_png char_offset="3881" justification="left" link="" sha256sum="9208d9000008f3cc94c7e58b52eba8ec5c3a0c534a38ae065970874d047a4f4d"/>
+  </node>
+</cherrytree>

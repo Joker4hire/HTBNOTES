@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="16" master_id="0" name="Alternative - Metasploit" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742989876" ts_lastsave="1742989878">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Nibbles - Alternate User Method - Metasploit</rich_text>
+    <rich_text>
+
+As discussed earlier, there is also a </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text> module  that works for this box. It is considerably more straightforward, but it  is worth practicing both methods to
+ become familiar with as many tools  and techniques as possible. Start </rich_text>
+    <rich_text family="monospace">Metsaploit</rich_text>
+    <rich_text> from your attack box by typing </rich_text>
+    <rich_text family="monospace">msfconsole</rich_text>
+    <rich_text>. Once loaded, we can search for the exploit.
+</rich_text>
+  </node>
+</cherrytree>

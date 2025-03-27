@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="19" master_id="0" name="Common Pitfalls" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742990198" ts_lastsave="1742990517">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Common Pitfalls</rich_text>
+    <rich_text>
+
+While performing penetration tests or attacking HTB boxes/labs, we  may make many common mistakes that will hamper our progress.  In this  section, we will discuss some of these common pitfalls and how to  overcome them.
+
+
+
+</rich_text>
+    <rich_text scale="h2">VPN Issues</rich_text>
+    <rich_text>
+
+We may sometimes face issues related to VPN connections to the HTB  labs network.  First, we should ensure that we are indeed connected to  the HTB network.
+
+
+</rich_text>
+    <rich_text scale="h4">Still Connected to VPN</rich_text>
+    <rich_text>
+
+The easiest method of checking if we have successfully connected to the VPN network is by checking whether we have </rich_text>
+    <rich_text family="monospace">Initialization Sequence Completed</rich_text>
+    <rich_text> at the end of our VPN connection messages:
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">Getting VPN Address</rich_text>
+    <rich_text>
+
+Another way of checking whether we are connected to the VPN network is by checking our VPN </rich_text>
+    <rich_text family="monospace">tun0</rich_text>
+    <rich_text> address, which we can find with the following command:
+
+
+
+As long we get our IP back, then we should be connected to the VPN network.
+
+
+
+</rich_text>
+    <rich_text scale="h4">Checking Routing Table</rich_text>
+    <rich_text>
+
+Another way to check for connectivity is to use the command </rich_text>
+    <rich_text family="monospace">sudo netstat -rn</rich_text>
+    <rich_text> to view our routing table:
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">Pinging Gateway</rich_text>
+    <rich_text>
+
+From here, we can see that we are connected to the </rich_text>
+    <rich_text family="monospace">10.10.14.0/23</rich_text>
+    <rich_text> network on the </rich_text>
+    <rich_text family="monospace">tun0</rich_text>
+    <rich_text> adapter and have access to the </rich_text>
+    <rich_text family="monospace">10.129.0.0/16</rich_text>
+    <rich_text> network and can ping the gateway </rich_text>
+    <rich_text family="monospace">10.10.14.1</rich_text>
+    <rich_text> to confirm access.
+
+
+
+Finally, we can either attack an assigned target host on the 10.129.0.0/16 network or begin enumeration for live hosts.
+
+
+
+</rich_text>
+    <rich_text scale="h4">Working on Two Devices</rich_text>
+    <rich_text>
+
+The HTB VPN cannot be connected to more than one device  simultaneously. If we are connected on one device and try to connect  from another device, the second connection attempt will fail.
+
+For example, this can happen when our VPN connection is connected in  our PwnBox, and then we try to connect to it from our Parrot VM at the  same time. Alternatively, perhaps we are connected on our Parrot VM, and  then we want to switch to a Windows VM to test something.
+
+
+
+</rich_text>
+    <rich_text scale="h4">Checking Region</rich_text>
+    <rich_text>
+
+If we feel a noticeable lag in our VPN connection, such as latency in  pings or ssh connections, we should ensure that we are connected to the  most appropriate region.
+HTB provides VPN servers worldwide, in </rich_text>
+    <rich_text family="monospace">Europe</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">USA</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">Australia</rich_text>
+    <rich_text>, and </rich_text>
+    <rich_text family="monospace">Singapore</rich_text>
+    <rich_text>. Ideally, it would help if we tried to connect to the server closest to us to get the best possible connection.
+
+To change our VPN Server, go to </rich_text>
+    <rich_text link="webs https://app.hackthebox.eu/home">HackTheBox</rich_text>
+    <rich_text>, click on the top-right icon that says </rich_text>
+    <rich_text family="monospace">Lab Access</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">Offline</rich_text>
+    <rich_text>, click on </rich_text>
+    <rich_text family="monospace">Labs</rich_text>
+    <rich_text>, and then click on </rich_text>
+    <rich_text family="monospace">OpenVPN</rich_text>
+    <rich_text>. Once we do, we should be able to pick our VPN server location and pick any of the servers within that region:
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">VPN Troubleshooting</rich_text>
+    <rich_text>
+
+In case we face any technical issues when connecting to the VPN, we  can find detailed guidance on troubleshooting VPN connections on this </rich_text>
+    <rich_text link="webs https://help.hackthebox.eu/troubleshooting/v2-vpn-connection-troubleshooting">HackTheBox Help page</rich_text>
+    <rich_text>.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Burp Suite Proxy Issues</rich_text>
+    <rich_text>
+
+</rich_text>
+    <encoded_png char_offset="630" justification="left" link="" sha256sum="98c8524cf4931edf4510dcbf7d7738ea8522bbb2887cae3c74cf97672cf8cbbc"/>
+    <encoded_png char_offset="808" justification="left" link="" sha256sum="a21898e8772a76d2ca26eb940e8649d1feca572e2e3969639aad9dfafb5d61ec"/>
+    <encoded_png char_offset="1019" justification="left" link="" sha256sum="e2b4df08b965a7ae716c6d0760e72a634935912e5eda3b04b1ece99cc42a151d"/>
+    <encoded_png char_offset="1235" justification="left" link="" sha256sum="98fbcb13ea4b2e8d678bfd9193e2460aa9f06987ef0f7f445dff27f0821f44fd"/>
+    <encoded_png char_offset="2485" justification="left" link="" sha256sum="cab3c3d038749f63fbd497343e8e1b300fba737f2e69703704a71f44ae61836d"/>
+  </node>
+</cherrytree>

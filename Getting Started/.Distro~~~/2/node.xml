@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="2" master_id="0" name="Connecting Using VPN" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742543370" ts_lastsave="1742544068">
+    <rich_text weight="heavy">A </rich_text>
+    <rich_text link="webs https://en.wikipedia.org/wiki/Virtual_private_network" weight="heavy">virtual private network (VPN)</rich_text>
+    <rich_text weight="heavy"> allows us to connect to a private (internal) network and access hosts 
+and resources as if we were directly connected to the target private network. It is a secured communications channel over shared public 
+networks to connect to a private network (i.e., an employee remotely connecting to their company's
+corporate network from their home). VPNs provide a degree of privacy and security by encrypting communications
+ over the channel to prevent eavesdropping and access to data traversing the channel.</rich_text>
+    <rich_text>
+ 
+ 
+ 
+ 
+</rich_text>
+    <rich_text scale="h2">Why Use A VPN?</rich_text>
+    <rich_text>
+
+We can use a VPN service such as </rich_text>
+    <rich_text family="monospace">NordVPN</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">Private Internet Access</rich_text>
+    <rich_text>  and connect to a VPN server in another part of our country or another  region of the world to obscure our browsing traffic or disguise our  public IP address. This can provide us with some level of security and  privacy. Still, since we are connecting to a company's
+	server, there is  always the chance that data is being logged or the VPN service is not  following security best practices or the security features that they  advertise. Using a VPN service comes with the risk that the provider is  not doing what they are saying and are logging all data. Usage of a VPN  service </rich_text>
+    <rich_text weight="heavy">does not</rich_text>
+    <rich_text> guarantee anonymity or	 privacy but is  useful for bypassing certain network/firewall restrictions or when  connected to a possible hostile network (i.e., a public airport wireless  network). A VPN service should never be used with the thought that it  will protect us from the consequences of performing nefarious  activities.
+</rich_text>
+    <encoded_png char_offset="537" justification="left" link="" sha256sum="02877cda49aaab439cf27597c1efde5016ec37001d9bd06ea1cd6d97611ff98e"/>
+  </node>
+</cherrytree>

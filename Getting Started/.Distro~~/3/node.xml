@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="3" master_id="0" name="Common Terms" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742544250" ts_lastsave="1742545944">
+    <rich_text scale="h2">What is a Shell?</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text family="monospace">Shell</rich_text>
+    <rich_text> is a very common term that we will hear again and again during our journey. It has a few meanings.
+On a Linux system, the shell is a program that takes input from the user via the keyboard and passes these
+commands to the operating system to perform a specific function. In the early days of computing, the shell was the only interface
+available for interacting with systems. Since then, many more operating system types and versions have emerged along with the 
+graphic user interface (GUI) to complement command-line interfaces (shell), such as the Linux terminal, Windows command-line (cmd.exe), and Windows PowerShell
+
+
+We will often read about or hear others talking about "getting a shell" on a box (system). This means that the target host has been exploited, and we 
+have obtained shell-level access (typically </rich_text>
+    <rich_text family="monospace">bash</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">sh</rich_text>
+    <rich_text>) and can run commands interactively as if we are sitting logged in to the host. A shell may be obtained 
+by exploiting a web application or network/service vulnerability or obtaining credentials and logging into the target host remotely. There are three main types of shell connections:
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">What is a Port?</rich_text>
+    <rich_text>
+
+A </rich_text>
+    <rich_text link="webs https://en.wikipedia.org/wiki/Port_(computer_networking)">port</rich_text>
+    <rich_text> can be thought of as a window or door on a house (the house being a remote system), if a window or door is
+left open or not locked correctly, we can often gain unauthorized access to a home. This is similar in computing. Ports
+are virtual points where network connections begin and end. They are software-based and managed by the host operating
+system. Ports are associated with a specific process or service and allow computers to differentiate between different traffic types 
+(SSH traffic flows to a different port than web requests to access a website even though the access requests are sent over the same network connection).
+
+
+</rich_text>
+    <rich_text family="monospace">TCP</rich_text>
+    <rich_text> is connection-oriented, meaning that a connection between a client and a server must be established before data can be sent. 
+The server must be in a listening state awaiting connection requests from clients.
+</rich_text>
+    <rich_text family="monospace">UDP</rich_text>
+    <rich_text> utilizes a connectionless communication model. There is no "handshake" and therefore introduces a 
+certain amount of unreliability since there is no guarantee of data delivery. </rich_text>
+    <rich_text family="monospace">UDP</rich_text>
+    <rich_text> is useful when error correction/checking 
+is either not needed or is handled by the application itself. </rich_text>
+    <rich_text family="monospace">UDP</rich_text>
+    <rich_text> is suitable for applications that run time-sensitive tasks since 
+dropping packets is faster than waiting for delayed packets due to retransmission, as is the case with </rich_text>
+    <rich_text family="monospace">TCP</rich_text>
+    <rich_text> and can significantly 
+affect a real-time system. There are </rich_text>
+    <rich_text family="monospace">65,535</rich_text>
+    <rich_text> </rich_text>
+    <rich_text family="monospace">TCP</rich_text>
+    <rich_text> ports and </rich_text>
+    <rich_text family="monospace">65,535</rich_text>
+    <rich_text> different </rich_text>
+    <rich_text family="monospace">UDP</rich_text>
+    <rich_text> ports, each denoted by a number. Some of the most well-known </rich_text>
+    <rich_text family="monospace">TCP</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">UDP</rich_text>
+    <rich_text> ports are listed below:
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">What is a Web Server</rich_text>
+    <rich_text>
+
+
+A web server is an application that runs on the back-end server, which handles all of the </rich_text>
+    <rich_text family="monospace">HTTP</rich_text>
+    <rich_text> traffic from the client-side browser, 
+routes it to the requests destination pages, and finally responds to the client-side browser. Web servers usually run on TCP 
+ports </rich_text>
+    <rich_text family="monospace">80</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">443</rich_text>
+    <rich_text>, and are responsible for connecting end-users to various parts of the web application, in addition to handling their various responses:
+
+
+
+
+
+Many types of vulnerabilities can affect web applications. We will often hear about/see references to the </rich_text>
+    <rich_text link="webs https://owasp.org/www-project-top-ten/">OWASP Top 10</rich_text>
+    <rich_text>. 
+This is a standardized list of the top 10 web application vulnerabilities maintained by the Open Web Application Security Project (OWASP). 
+This list is considered the top 10 most dangerous vulnerabilities and is not an exhaustive list of all possible web application vulnerabilities.  
+Web application security assessment methodologies are often based around the OWASP top 10 as a starting point for the top categories of f
+laws that an assessor should be checking for. The current OWASP Top 10 list is:
+
+
+</rich_text>
+    <encoded_png char_offset="1141" justification="left" link="" sha256sum="086294e8777b6ddc323b038869d8de7e75cdde91a9e7f7f0b3f96ad22fa447bf"/>
+    <encoded_png char_offset="2682" justification="left" link="" sha256sum="e42f5c623974cdaa4f37e53d5fa8a194e34556ad641967280756fb03b179ba07"/>
+    <encoded_png char_offset="3123" justification="left" link="" sha256sum="8d1d9879905ef5a7525d1eae4d760b40ec024ceb0b3b90fdf5700884fec9e60d"/>
+    <encoded_png char_offset="3755" justification="left" link="" sha256sum="bdfc1869b9dbed31c70a2743abad7f94cd45a97ec95e8bf20a6248941576e502"/>
+  </node>
+</cherrytree>

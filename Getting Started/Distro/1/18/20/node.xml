@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="20" master_id="0" name="Getting Help" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742990721" ts_lastsave="1742991134">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Getting Help</rich_text>
+    <rich_text>
+
+When we start working on boxes on </rich_text>
+    <rich_text family="monospace">Hack The Box</rich_text>
+    <rich_text>, we may  likely get stuck in certain areas and may need to ask other players for  some little tips and hints, to be able to move forward on the box. Here  are some areas in which we can get help.
+
+
+</rich_text>
+    <rich_text scale="h2">Forum</rich_text>
+    <rich_text>
+
+The </rich_text>
+    <rich_text link="webs https://forum.hackthebox.com">Hack The Box Forum</rich_text>
+    <rich_text> is an excellent place for discussing live and retired </rich_text>
+    <rich_text family="monospace">Hack The Box</rich_text>
+    <rich_text> boxes and challenges.
+
+
+
+Each box has an official discussion thread, in which live discussions  are had about all aspects of the box, without giving any spoilers or  clear indications on how to exploit the box. 
+If we want to work on a  retired box and do not want to follow a step-by-step tutorial, we can  read older box threads and look for hints and tips. 
+This way, we can  challenge ourselves on older boxes and consult the box's official  discussion thread in case we get stuck.
+
+
+</rich_text>
+    <encoded_png char_offset="380" justification="left" link="" sha256sum="7de7c324af6299534a19cb40867bb9781ad0b6acf4f3d8632d8606508b0af842"/>
+  </node>
+</cherrytree>

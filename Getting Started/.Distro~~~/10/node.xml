@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="10" master_id="0" name="Transferring Files" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742816031" ts_lastsave="1742816451">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Transferring Files</rich_text>
+    <rich_text>
+
+
+During any penetration testing exercise, it is likely that we 
+will need to transfer files to the remote server, such as enumeration 
+scripts or exploits, or transfer data back to our attack host. While tools like 
+Metasploit with a Meterpreter shell allow us to use the </rich_text>
+    <rich_text family="monospace">Upload</rich_text>
+    <rich_text> command to 
+upload a file, we need to learn methods to transfer files with a standard reverse shell.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Using wget</rich_text>
+    <rich_text>
+
+There are many methods to accomplish this. One method is running a </rich_text>
+    <rich_text link="webs https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server">Python HTTP server</rich_text>
+    <rich_text> 
+on our machine and then using </rich_text>
+    <rich_text family="monospace">wget</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">cURL</rich_text>
+    <rich_text> to download the file on the remote host. 
+First, we go into the directory that contains the file we need to transfer and run a Python HTTP server in it:
+
+
+
+
+
+
+Now that we have set up a listening server on our machine, we can  download the file on the remote host that we have code execution on:
+
+
+	
+	
+	
+</rich_text>
+    <rich_text scale="h2">Using SCP</rich_text>
+    <rich_text>
+
+Another method to transfer files would be using </rich_text>
+    <rich_text family="monospace">scp</rich_text>
+    <rich_text>, granted we have obtained ssh user credentials on the remote host.  We can do so as follows:
+
+
+Note that we specified the local file name after </rich_text>
+    <rich_text family="monospace">scp</rich_text>
+    <rich_text>, and the remote directory will be saved to after the </rich_text>
+    <rich_text family="monospace">:</rich_text>
+    <rich_text>.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Using Base64</rich_text>
+    <rich_text>
+
+In some cases, we may not be able to transfer the file. For example,  the remote host may have firewall protections that prevent us from  
+downloading a file from our machine. In this type of situation, we can  use a simple trick to </rich_text>
+    <rich_text link="webs https://linux.die.net/man/1/base64">base64</rich_text>
+    <rich_text> encode the file into </rich_text>
+    <rich_text family="monospace">base64</rich_text>
+    <rich_text> format, 
+and then we can paste the </rich_text>
+    <rich_text family="monospace">base64</rich_text>
+    <rich_text> string on the remote server and decode it. For example, if we wanted to transfer a binary file called </rich_text>
+    <rich_text family="monospace">shell</rich_text>
+    <rich_text>, we can </rich_text>
+    <rich_text family="monospace">base64</rich_text>
+    <rich_text> encode it as follows:
+
+
+
+Now, we can copy this </rich_text>
+    <rich_text family="monospace">base64</rich_text>
+    <rich_text> string, go to the remote host, and use </rich_text>
+    <rich_text family="monospace">base64 -d</rich_text>
+    <rich_text> to decode it, and pipe the output into a file:
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Validating File Transfers</rich_text>
+    <rich_text>
+
+
+To validate the format of a file, we can run the </rich_text>
+    <rich_text link="webs https://linux.die.net/man/1/file">file</rich_text>
+    <rich_text> command on it:
+
+
+
+
+As we can see, when we run the </rich_text>
+    <rich_text family="monospace">file</rich_text>
+    <rich_text> command on the </rich_text>
+    <rich_text family="monospace">shell</rich_text>
+    <rich_text>  file, it says that it is an ELF binary, meaning that we successfully 
+ transferred it. To ensure that we did not mess up the file during the  encoding/decoding process, we can check its md5 hash. On our machine, we  can run </rich_text>
+    <rich_text family="monospace">md5sum</rich_text>
+    <rich_text> on it:
+
+
+</rich_text>
+    <encoded_png char_offset="702" justification="left" link="" sha256sum="0d6b3f8c330315134ca802db76e25a561c7fe38c874abd0bb2f2898c6044968a"/>
+    <encoded_png char_offset="842" justification="left" link="" sha256sum="035df0fdfce737344ab725ad93dc20326ca87c2af2fed63d45bdbbd1397521dd"/>
+    <encoded_png char_offset="1007" justification="left" link="" sha256sum="5ca2274af944636ffa12db45faead965c66b39af77704aa65da1ffb3540d836d"/>
+    <encoded_png char_offset="1591" justification="left" link="" sha256sum="ca15490d4d0dd9c2760245d9ab77a01e5ce5f4bfc18c40fd5dc77a08cf6a1a5e"/>
+    <encoded_png char_offset="1720" justification="left" link="" sha256sum="12fa2ba100b847357c9fa300cf67f4f2d5c4e978f3341898adfa6db5d3e091c9"/>
+    <encoded_png char_offset="1823" justification="left" link="" sha256sum="31bdca1e165891ff38d42bce4529462b9da51dbefdefe4196c6d90b3cc767ca9"/>
+    <encoded_png char_offset="2123" justification="left" link="" sha256sum="12d6725c40071f51a719289797a4ffb90e712c89574af2cfe94a484ed023180e"/>
+  </node>
+</cherrytree>

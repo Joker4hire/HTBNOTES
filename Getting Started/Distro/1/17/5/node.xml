@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="5" master_id="0" name="Service Scanning" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742547369" ts_lastsave="1742990118">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Service Scanning</rich_text>
+    <rich_text>
+
+Computers are assigned an IP address, which allows them to be  uniquely identified and accessible on a network. The services running on  
+these computers may be assigned a port number to make the service  accessible. As discussed prior, port numbers range from 1 to 65,535,  
+with the range of well-known ports 1 to 1,023 being reserved for  privileged services. Port 0 is a reserved port in TCP/IP networking and  is 
+not used in TCP or UDP messages. If anything attempts to bind to port  0 (such as a service), it will bind to the next available port above  port 1,024 because port 0 is treated as a "wild card" port.
+To access a service remotely, we need to connect using the correct IP  address and port number and use a language that the service  understands. 
+Manually examining all of the 65,535 ports for any  available services would be laborious, and so tools have been created to  automate this process 
+and scan the range of ports for us. One of the  most commonly used scanning tools is Nmap(Network Mapper).
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Nmap</rich_text>
+    <rich_text>
+
+Let us start with the most basic scan. Suppose that we want to perform a basic 
+scan against a target residing at 10.129.42.253. To do this we should type </rich_text>
+    <rich_text family="monospace">nmap 
+10.129.42.253</rich_text>
+    <rich_text> and hit return. We see that the </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> scan was completed very quickly. 
+This is because if we don't specify any additional options, Nmap will only scan the 1,000 most common 
+ports by default. The scan output reveals that ports 21, 22, 80, 139, and 445 are available.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+We can use the </rich_text>
+    <rich_text family="monospace">-sC</rich_text>
+    <rich_text> parameter to specify that </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> scripts should be used to try and obtain more detailed information. 
+The </rich_text>
+    <rich_text family="monospace">-sV</rich_text>
+    <rich_text> parameter instructs </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> to perform a version scan. In this scan, Nmap will fingerprint services on the target 
+system and identify the service protocol, application name, and version. The version scan is underpinned by a 
+comprehensive database of over 1,000 service signatures. Finally, </rich_text>
+    <rich_text family="monospace">-p-</rich_text>
+    <rich_text> tells Nmap that we want to scan all 65,535 TCP ports.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+</rich_text>
+    <rich_text scale="h4">Nmap Scripts</rich_text>
+    <rich_text>
+
+
+Specifying </rich_text>
+    <rich_text family="monospace">-sC</rich_text>
+    <rich_text> will run many useful default scripts against a target, but there are cases when running a specific script is required. 
+For example, in an assessment scope, we may be asked to audit a large Citrix installation. We could use </rich_text>
+    <rich_text link="webs https://raw.githubusercontent.com/cyberstruggle/DeltaGroup/master/CVE-2019-19781/CVE-2019-19781.nse">this</rich_text>
+    <rich_text> </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> script to audit for 
+the severe Citrix NetScaler vulnerability (</rich_text>
+    <rich_text link="webs https://blog.rapid7.com/2020/01/17/active-exploitation-of-citrix-netscaler-cve-2019-19781-what-you-need-to-know/">CVE-2019–19781</rich_text>
+    <rich_text>), while </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> also has other scripts to audit a Citrix installation.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+The syntax for running an Nmap script is </rich_text>
+    <rich_text family="monospace" foreground="#8ff0a4">nmap --script &lt;script name&gt; -p&lt;port&gt; &lt;host&gt;</rich_text>
+    <rich_text>.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Attacking Network Services</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <rich_text scale="h4">Banner Grabbing</rich_text>
+    <rich_text>
+
+
+As previously discussed, banner grabbing is a useful technique to fingerprint a service quickly. 
+Often a service will look to identify itself by displaying a banner once a connection is initiated. 
+Nmap will attempt to grab the banners if the syntax</rich_text>
+    <rich_text foreground="#8ff0a4"> </rich_text>
+    <rich_text family="monospace" foreground="#8ff0a4">nmap -sV --script=banner &lt;target&gt;</rich_text>
+    <rich_text> is specified. 
+We can also attempt this manually using </rich_text>
+    <rich_text family="monospace">Netcat</rich_text>
+    <rich_text>. Let us take another example, using the </rich_text>
+    <rich_text family="monospace">nc</rich_text>
+    <rich_text> version of </rich_text>
+    <rich_text family="monospace">Netcat</rich_text>
+    <rich_text>:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+This reveals that the version of </rich_text>
+    <rich_text family="monospace">vsFTPd</rich_text>
+    <rich_text> on the server is </rich_text>
+    <rich_text family="monospace">3.0.3</rich_text>
+    <rich_text>. We can also automate this process using </rich_text>
+    <rich_text family="monospace">Nmap's</rich_text>
+    <rich_text> powerful scripting engine: </rich_text>
+    <rich_text family="monospace">nmap -sV --script=banner -p21 10.10.10.0/24</rich_text>
+    <rich_text>.
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">FTP</rich_text>
+    <rich_text>
+
+
+It is worth gaining familiarity with FTP, as it is a standard protocol, and this service can 
+often contain interesting data. A </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> scan of the default port for FTP (21) reveals the vsftpd 3.0.3
+installation that we identified previously. Further, it also reports that anonymous authentication is enabled and that a </rich_text>
+    <rich_text family="monospace">pub</rich_text>
+    <rich_text> directory is available.
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">SMB</rich_text>
+    <rich_text>
+
+SMB (Server Message Block) is a prevalent protocol on Windows machines that provides 
+many vectors for vertical and lateral movement. Sensitive data, including credentials, 
+can be in network file shares, and some SMB versions may be vulnerable to RCE exploits such as 
+</rich_text>
+    <rich_text link="webs https://www.avast.com/c-eternalblue">EternalBlue</rich_text>
+    <rich_text>. It is crucial to enumerate this sizeable potential attack surface carefully. </rich_text>
+    <rich_text family="monospace">Nmap</rich_text>
+    <rich_text> has many s
+cripts for enumerating SMB, such as </rich_text>
+    <rich_text link="webs https://nmap.org/nsedoc/scripts/smb-os-discovery.html">smb-os-discovery.nse</rich_text>
+    <rich_text>, which will interact with the SMB service 
+to extract the reported operating system version.
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">Shares</rich_text>
+    <rich_text>
+
+
+SMB allows users and administrators to share folders and make them accessible remotely by other users.
+Often these shares have files in them that contain sensitive information such as passwords. A tool that can 
+enumerate and interact with SMB shares is </rich_text>
+    <rich_text link="webs https://www.samba.org/samba/docs/current/man-html/smbclient.1.html">smbclient</rich_text>
+    <rich_text>. The </rich_text>
+    <rich_text family="monospace">-L</rich_text>
+    <rich_text> flag specifies that we want to retrieve a list of 
+available shares on the remote host, while </rich_text>
+    <rich_text family="monospace">-N</rich_text>
+    <rich_text> suppresses the password prompt.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+This reveals the non-default share </rich_text>
+    <rich_text family="monospace">users</rich_text>
+    <rich_text>. Let us attempt to connect as the guest user.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+We successfully gained access to the </rich_text>
+    <rich_text family="monospace">users</rich_text>
+    <rich_text> share using credentials and gained access to the interesting file </rich_text>
+    <rich_text family="monospace">passwords.txt</rich_text>
+    <rich_text>, which can be downloaded with the </rich_text>
+    <rich_text family="monospace">get</rich_text>
+    <rich_text> command.
+
+
+</rich_text>
+    <rich_text scale="h4">SNMP</rich_text>
+    <rich_text>
+
+
+SNMP Community strings provide information and statistics about a router or device, 
+helping us gain access to it. The manufacturer default community strings of </rich_text>
+    <rich_text family="monospace">public</rich_text>
+    <rich_text> 
+and </rich_text>
+    <rich_text family="monospace">private</rich_text>
+    <rich_text> are often unchanged. In SNMP versions 1 and 2c, access is controlled using 
+a plaintext community string, and if we know the name, we can gain access to it. Encryption 
+and authentication were only added in SNMP version 3. Much information can be gained from 
+SNMP. Examination of process parameters might reveal credentials passed on the 
+command line, which might be possible to reuse for other externally accessible services given 
+the prevalence of password reuse in enterprise environments. Routing information, services 
+bound to additional interfaces, and the version of installed software can also be revealed.
+
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+
+</rich_text>
+    <rich_text scale="h2">QUESTIONS</rich_text>
+    <rich_text>
+
+Perform an Nmap scan of the target. What does Nmap display as the version of the service running on port 8080?                            
+
+command used to  answer : nmap -sV 10.129.124.81 
+Apache Tomcat
+
+
+Perform an Nmap scan of the target and identify the non-default port that the telnet service is running on. 
+2323
+
+
+
+
+</rich_text>
+    <encoded_png char_offset="1494" justification="left" link="" sha256sum="b3242b34391d6c02a21fa37bf5b5c20b26d58e52fd28677b2dd9d812f5e9e6f9"/>
+    <encoded_png char_offset="1973" justification="left" link="" sha256sum="b27f1d126293fff94d979f8cedbb683638915c6cae97f91f961dc096b20c9377"/>
+    <encoded_png char_offset="2390" justification="left" link="" sha256sum="9721c58cda6f9e1324eac947b4a9f8590d32b175c895c5acd4d49eabdbfb1cfe"/>
+    <encoded_png char_offset="2938" justification="left" link="" sha256sum="1070442ba9c27fc5f4e34fec48a2042d0bec0acfb20e129d1b1e0d929688ff39"/>
+    <encoded_png char_offset="3480" justification="left" link="" sha256sum="5f05f32d933c7f584931771688395d474a6e38f3f33ec5c40882fbff43e521a3"/>
+    <encoded_png char_offset="4017" justification="left" link="" sha256sum="58b2c9a5d0504f1e833e9d84c3255d480d3095d0a732a40ba950ecf175a42c9f"/>
+    <encoded_png char_offset="4435" justification="left" link="" sha256sum="256622edf239602464316fe5f8e210f19158336efe1c7faf703ea0f7162ace3e"/>
+    <encoded_png char_offset="4526" justification="left" link="" sha256sum="d21728ddae30d243c6ec8cb9dba7cefef5c00d623fae680b2cbf2cc386526f42"/>
+    <encoded_png char_offset="4529" justification="left" link="" sha256sum="79920e5f38528e3f674d6bdb66357388512621b5347271d36bcd03c6d2a5b670"/>
+    <encoded_png char_offset="5512" justification="left" link="" sha256sum="e4ed7d33ceed5cc3c0a87ffc5b6f03dbfe66c3720a7418ac75b79d99009c7932"/>
+  </node>
+</cherrytree>

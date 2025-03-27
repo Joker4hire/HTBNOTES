@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="16" master_id="0" name="Alternative - Metasploit" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742989876" ts_lastsave="1742989925">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Nibbles - Alternate User Method - Metasploit</rich_text>
+    <rich_text>
+
+As discussed earlier, there is also a </rich_text>
+    <rich_text family="monospace">Metasploit</rich_text>
+    <rich_text> module  that works for this box. It is considerably more straightforward, but it  is worth practicing both methods to
+ become familiar with as many tools  and techniques as possible. Start </rich_text>
+    <rich_text family="monospace">Metsaploit</rich_text>
+    <rich_text> from your attack box by typing </rich_text>
+    <rich_text family="monospace">msfconsole</rich_text>
+    <rich_text>. Once loaded, we can search for the exploit.
+
+
+We can then type </rich_text>
+    <rich_text family="monospace">use 0</rich_text>
+    <rich_text> to load the selected exploit. Set the </rich_text>
+    <rich_text family="monospace">rhosts</rich_text>
+    <rich_text> option as the target IP 
+address and </rich_text>
+    <rich_text family="monospace">lhosts</rich_text>
+    <rich_text> as the IP address of your </rich_text>
+    <rich_text family="monospace">tun0</rich_text>
+    <rich_text> adapter (the one that comes with the VPN connection to HackTheBox).
+
+
+
+Type show options to see what other options need to be set.
+</rich_text>
+    <encoded_png char_offset="383" justification="left" link="" sha256sum="b7d0bfab40210e892ac58693735b3d2a0c066446e0d5936c6ff406c63b572731"/>
+    <encoded_png char_offset="597" justification="left" link="" sha256sum="8f331c547ce58fac1d1a1dc6df6ebd60445a76f5f37a1df60e60881b8f09b235"/>
+  </node>
+</cherrytree>

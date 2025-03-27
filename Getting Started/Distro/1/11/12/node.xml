@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="12" master_id="0" name="Enummeration" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1742816779" ts_lastsave="1742816935">
+    <rich_text> + 0 Run an nmap script scan on the target. What is the Apache version running on the server? (answer format: X.X.XX) 
+ 
+Apache httpd 2.4.18 ((Ubuntu))</rich_text>
+  </node>
+</cherrytree>
