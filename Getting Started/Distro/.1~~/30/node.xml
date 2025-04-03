@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="30" master_id="0" name="Proof-of-Concept" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1743452253" ts_lastsave="1743452621">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Proof-of-Concept</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text family="monospace">Proof of Concept</rich_text>
+    <rich_text> (</rich_text>
+    <rich_text family="monospace">PoC</rich_text>
+    <rich_text>) or </rich_text>
+    <rich_text family="monospace">Proof of Principle</rich_text>
+    <rich_text>  is a project management term. In project management, it serves as proof  that a project is feasible in principle. 
+The criteria for this can lie  in technical or business factors. Therefore, it is the basis for further  work, in our case, the necessary steps to secure the corporate network  
+by confirming the discovered vulnerabilities. In other words, it serves  as a decision-making basis for the further course of action. At the same  time, it enables risks to be identified and minimized.
+
+
+
+This project step is often integrated into the development process  for new application software (prototyping) or IT security solutions. For  us in information 
+security, this is where we prove vulnerabilities in  operating systems or application software. We use this PoC to prove that  a security problem exists so that 
+the developers or administrators can  validate it, reproduce it, see the impact, and test their remediation  efforts. One of the most common examples used 
+to prove software  vulnerabilities is executing the calculator (calc.exe on Windows) on the  target system. In principle, the PoC also assesses the probability of  success of system access from actual exploitation.
+
+
+A </rich_text>
+    <rich_text family="monospace">PoC</rich_text>
+    <rich_text> can have many different representations. For example, </rich_text>
+    <rich_text family="monospace">documentation</rich_text>
+    <rich_text> of the vulnerabilities found can also constitute a PoC. 
+The more practical version of a PoC is a </rich_text>
+    <rich_text family="monospace">script</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">code</rich_text>
+    <rich_text>  that automatically exploits the vulnerabilities found. This  demonstrates 
+the flawless exploitation of the vulnerabilities. This  variant is straightforward for an administrator or developer because  they can see what steps our script takes to exploit the vulnerability.
+
+
+However, there is one significant disadvantage that has occurred from  time to time. Once the administrators and developers have received such  
+a script from us, it is easy for them to "fight" against our script.  They focus on changing the systems so that the script we created no  
+longer works. The important thing is that the script is only </rich_text>
+    <rich_text family="monospace">one way</rich_text>
+    <rich_text>  of exploiting a given vulnerability. Therefore, working against our  
+script instead of with it and modifying and securing the systems so that  our script no longer works does not mean that the information 
+obtained  from the script cannot be obtained in another way. It is an important  aspect that should be discussed with the administrators and developers  and explicitly mentioned and pointed out.
+
+The report they receive from us should help them see the entire  picture, focus on the broader issues, and provide clear remediation  advice. 
+Including an attack chain walkthrough in the event of domain  compromise during an internal is a great way to show how multiple flaws  
+can be combined and how fixing one flaw will break the chain, but the  other flaws will still exist. If these are not also fixed, there may be  
+another path to get to the point where the attack chain was remediated  and continue onwards. We should also drive this point home during our  report review meeting.
+
+</rich_text>
+    <encoded_png char_offset="560" justification="left" link="" sha256sum="d841c64dddbfbe860369fdadcabff7c6cc26e5510efee24286ff8e2ef88b2996"/>
+  </node>
+</cherrytree>

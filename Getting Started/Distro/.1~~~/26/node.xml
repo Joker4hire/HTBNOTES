@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="26" master_id="0" name="Exploitation" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1743256549" ts_lastsave="1743256813">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Exploitation</rich_text>
+    <rich_text>
+
+
+During the </rich_text>
+    <rich_text family="monospace">Exploitation</rich_text>
+    <rich_text> stage, we look for ways that  these weaknesses can be adapted to our use case to obtain the desired  
+role (i.e., a foothold, escalated privileges, etc.). If we want to get a  reverse shell, we need to modify the PoC to execute the code, 
+so the  target system connects back to us over (ideally) an encrypted connection  to an IP address we specify. 
+Therefore, the preparation of an exploit  is mainly part of the </rich_text>
+    <rich_text family="monospace">Exploitation</rich_text>
+    <rich_text> stage.
+
+
+
+These stages should not be strictly separated from each other, as  they are closely connected. Nevertheless, it is still important to  distinguish which 
+phase we are in and its purpose. Because later, with  much more complex processes and much more information, it is very easy  to lose track of the 
+steps that have been taken, especially if the  penetration test lasts several weeks and covers a massive scope.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Prioritization of Possible Attacks</rich_text>
+    <rich_text>
+
+Once we have found one or two vulnerabilities during the </rich_text>
+    <rich_text family="monospace">Vulnerability Assessment</rich_text>
+    <rich_text>  stage that we can apply to our target network/system, 
+we can prioritize  those attacks. Which of those attacks we prioritize higher than the  others depends on the following factors:
+		• Probability of Success
+		• Complexity
+		• Probability of Damage
+
+</rich_text>
+    <encoded_png char_offset="476" justification="left" link="" sha256sum="fb6cb7276bdbde2f729f9b3dd78acebb7c33b82f1b348ebfff3c567bb5f44492"/>
+  </node>
+</cherrytree>

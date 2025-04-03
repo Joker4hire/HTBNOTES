@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="25" master_id="0" name="Vulnerability Assessment" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1743171507" ts_lastsave="1743257322">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Vulnerability Assessment</rich_text>
+    <rich_text>
+
+
+During the </rich_text>
+    <rich_text family="monospace">vulnerability assessment</rich_text>
+    <rich_text> phase, we examine  and analyze the information gathered during the information gathering  phase. The vulnerability assessment phase is an analytical process based  on the findings.
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text family="monospace" foreground="#8ff0a4">An analysis is a detailed examination of an event or process,  describing its origin and impact, that with the help of certain  precautions and actions, can be triggered to support or prevent future  occurrences.</rich_text>
+    <rich_text>
+
+
+Any analysis can be very complicated, as many different factors and  their interdependencies play a significant role. Apart from the fact  that we work with 
+the three different times (past, present, and future)  during each analysis, the origin and destination play a significant  role. There are four different types of analysis:
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+</rich_text>
+    <rich_text justification="left"></rich_text>
+    <rich_text>
+
+
+We use our results and information obtained so far and analyze them  to make conclusions. The formation of conclusions can be extended very  far, 
+but we must then confirm or disprove them. Suppose we found an open  TCP port 2121 on a host during the information-gathering phase.
+
+Other than the fact that this port is open, Nmap did not show us  anything else. We must now ask ourselves what conclusions can be drawn  
+from this result. Therefore, it does not matter which question we start  with to make our conclusions. However, it is essential to ask </rich_text>
+    <rich_text family="monospace">precise 
+questions</rich_text>
+    <rich_text> and remember what we </rich_text>
+    <rich_text family="monospace">know</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">do not know</rich_text>
+    <rich_text>. 
+At this point, we must first ask ourselves what we </rich_text>
+    <rich_text family="monospace">see</rich_text>
+    <rich_text> and what we actually </rich_text>
+    <rich_text family="monospace">have</rich_text>
+    <rich_text>, because what we see is not the same as what we have:
+
+• a </rich_text>
+    <rich_text family="monospace">TCP</rich_text>
+    <rich_text> port </rich_text>
+    <rich_text family="monospace">2121</rich_text>
+    <rich_text>. - </rich_text>
+    <rich_text family="monospace">TCP</rich_text>
+    <rich_text> already means that this service is </rich_text>
+    <rich_text family="monospace">connection-oriented</rich_text>
+    <rich_text>.
+• Is this a </rich_text>
+    <rich_text family="monospace">standard</rich_text>
+    <rich_text> port? - </rich_text>
+    <rich_text family="monospace">No</rich_text>
+    <rich_text>, because these are between </rich_text>
+    <rich_text family="monospace">0-1023</rich_text>
+    <rich_text>, aka well-known or </rich_text>
+    <rich_text link="webs https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">system ports</rich_text>
+    <rich_text>
+• Are there any numbers in this </rich_text>
+    <rich_text family="monospace">port number</rich_text>
+    <rich_text> that look </rich_text>
+    <rich_text family="monospace">familiar</rich_text>
+    <rich_text>? - </rich_text>
+    <rich_text family="monospace">Yes</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">TCP</rich_text>
+    <rich_text> port </rich_text>
+    <rich_text family="monospace">21</rich_text>
+    <rich_text> (</rich_text>
+    <rich_text family="monospace">FTP</rich_text>
+    <rich_text>).  From our experience, we will get to know many standard ports and their  services, which administrators often try to disguise, but often use  "easy to remember" alternatives.
+
+Based on our guess, we can try to connect to the service using </rich_text>
+    <rich_text family="monospace">Netcat</rich_text>
+    <rich_text> or an </rich_text>
+    <rich_text family="monospace">FTP</rich_text>
+    <rich_text> client and try to establish a connection to confirm or disprove our guess.
+
+
+While connecting to the service, we noticed that the connection took  longer than usual (about 15 seconds). There are some services whose  connection speed, 
+or response time, can be configured. Now that we know  that an FTP server is running on this port, we can deduce the origin of  our "failed" scan. We could confirm 
+this again by specifying the minimum  </rich_text>
+    <rich_text family="monospace">probe round trip time</rich_text>
+    <rich_text> (</rich_text>
+    <rich_text family="monospace">--min-rtt-timeout</rich_text>
+    <rich_text>) in Nmap to 15 or 20 seconds and rerunning the scan.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Vulnerability Research and Analysis</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text family="monospace">Information Gathering</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">Vulnerability Research</rich_text>
+    <rich_text> can be considered a part of descriptive analysis. This is where we identify the individual network
+or system components we are investigating. In </rich_text>
+    <rich_text family="monospace">Vulnerability Research</rich_text>
+    <rich_text>, we look for known vulnerabilities, exploits, and security holes that have 
+already been discovered and reported. Therefore, if we have identified a version of a service or application through information gathering 
+and found a </rich_text>
+    <rich_text link="webs https://www.cve.org/ResourcesSupport/FAQs">Common Vulnerabilities and Exposures (CVE)</rich_text>
+    <rich_text>, it is very likely that this vulnerability is still present.
+
+
+We can find vulnerability disclosures for each component using many different sources. These include, but are not limited to:
+
+
+
+
+This is where </rich_text>
+    <rich_text family="monospace">Diagnostic Analysis</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">Predictive Analysis</rich_text>
+    <rich_text>  is used. Once we have found a published vulnerability 
+like this, we can  diagnose it to determine what is causing or has caused the  vulnerability. Here, we must understand the 
+functionality of the </rich_text>
+    <rich_text family="monospace">Proof-Of-Concept</rich_text>
+    <rich_text> (</rich_text>
+    <rich_text family="monospace">POC</rich_text>
+    <rich_text>)  code or the application or service itself as best as possible, as many  manual 
+configurations by administrators will require some customization  for the POC. Each POC is tailored to a specific case that we will also  need to adapt to ours in most cases.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Assessment of Possible Attack Vectors</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text family="monospace">Vulnerability Assessment</rich_text>
+    <rich_text> also includes the actual testing, which is part of </rich_text>
+    <rich_text family="monospace">Predictive Analysis</rich_text>
+    <rich_text>.  In doing so, we analyze historical 
+information and combine it with the  current information that we have been able to find out. Whether we have  received specific evasion 
+level requirements from our client, we test  the services and applications found </rich_text>
+    <rich_text family="monospace">locally</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">on the target system</rich_text>
+    <rich_text>.  If we have to test 
+covertly and avoid alerts, we should mirror the  target system locally as precisely as possible. This means we use the  information obtained 
+during our information gathering phase to replicate  the target system and then look for vulnerabilities in the locally  deployed system.
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">The Return</rich_text>
+    <rich_text>
+
+
+
+Suppose we are unable to detect or identify potential vulnerabilities from our analysis. In that case, we will return to the </rich_text>
+    <rich_text family="monospace">Information 
+Gathering</rich_text>
+    <rich_text> stage and look for more in-depth information than we have gathered so far. It is important to note that these two stages 
+(</rich_text>
+    <rich_text family="monospace">Information Gathering</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">Vulnerability Assessment</rich_text>
+    <rich_text>)  often overlap, resulting in regular back and forth movement between  
+them. We will see this in many videos where the author is solving an HTB  box or some CTF challenge. We should remember that these 
+challenges are  often solved as fast as possible, and therefore speed is more important  than quality. In a CTF, the goal is to get on the target 
+machine and </rich_text>
+    <rich_text family="monospace">capture the flags</rich_text>
+    <rich_text> with the highest privileges as fast as possible instead of exposing all potential weaknesses in the system.
+
+
+</rich_text>
+    <rich_text family="monospace" weight="heavy">A (real) Penetration Test is not a CTF.</rich_text>
+    <rich_text>
+
+Here the </rich_text>
+    <rich_text family="monospace">quality</rich_text>
+    <rich_text> and </rich_text>
+    <rich_text family="monospace">intensity</rich_text>
+    <rich_text> of our  penetration test and its analysis have the highest priority because  nothing is worse if our client gets successfully hacked via a relatively  simple vector that we should have uncovered during our penetration  test.
+
+
+</rich_text>
+    <rich_text scale="h2">Preparation for the Attack</rich_text>
+    <rich_text>
+
+Sometimes we will run into a situation where we can't find  high-quality, known working PoC exploit code. Therefore, it may be  necessary to 
+reconstruct the exploit locally on a VM representing our  target host to figure out precisely what needs to be adapted and  changed. 
+Once we have set up the system locally and installed known  components to mirror the target environment as closely as possible 
+ (i.e., same version numbers for target services/applications), we can  start preparing the exploit by following the steps described in the  
+ exploit. Then we test this on a locally hosted VM to ensure it works and  does not damage significantly. In other situations, we will encounter  
+ misconfigurations and vulnerabilities that we see very often and know  exactly which tool or exploit to use and whether the exploit or  technique is "safe" or can cause instability.
+
+
+
+If ever in doubt before running an attack, it's always best to check  with our client, providing them all 
+necessary data so they can make an  informed decision on whether they would like us to attempt exploitation  or just mark the 
+finding as an issue. If they opt for us not to proceed  with exploitation, we can note in the report that it was not confirmed  
+actively but is likely an issue that needs to be addressed. We have a  certain amount of leeway during penetration tests and 
+should always use  our best judgment if a particular attack seems too risky or could  potentially cause a disruption. 
+When in doubt, communicate. Your team  lead/manager, the client, will almost certainly prefer extra  communication
+ than run into a situation where they are trying to bring a  system back online after a failed exploit attempt.
+
+
+Once we have successfully exploited a target and have initial access  (and taken clear notes for our reports and logged all activities in our  activity log!), we'll move on to the post-exploitation and lateral  movement stages.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</rich_text>
+    <encoded_png char_offset="245" justification="left" link="" sha256sum="fb6c6991019c1c53eac15474bd8c224ae6cb908be7e23d63d08e08638de3774d"/>
+    <table char_offset="795" justification="left" col_min="60" col_max="60" col_widths="0,810">
+      <row>
+        <cell>Descriptive</cell>
+        <cell>Descriptive analysis is essential in any data analysis. On the one hand, it describes a data set based on individual characteristics. It helps to detect possible errors in data collection or outliers in the data set.</cell>
+      </row>
+      <row>
+        <cell>Diagnostic</cell>
+        <cell>Diagnostic analysis clarifies conditions' causes, effects, and interactions. Doing so provides insights that are obtained through correlations and interpretation. We must take a backward-looking view, similar to descriptive analysis, with the subtle difference that we try to find reasons for events and developments.</cell>
+      </row>
+      <row>
+        <cell>Predictive</cell>
+        <cell>By evaluating historical and current data, predictive analysis creates a predictive model for future probabilities. Based on the results of descriptive and diagnostic analyses, this method of data analysis makes it possible to identify trends, detect deviations from expected values at an early stage, and predict future occurrences as accurately as possible.</cell>
+      </row>
+      <row>
+        <cell>Analysis Type</cell>
+        <cell>Description</cell>
+      </row>
+    </table>
+    <table char_offset="797" justification="left" col_min="60" col_max="60" col_widths="0,0">
+      <row>
+        <cell>Prescriptive</cell>
+        <cell>Prescriptive analytics aims to narrow down what actions to take to eliminate or prevent a future problem or trigger a specific activity or process.</cell>
+      </row>
+    </table>
+    <encoded_png char_offset="3329" justification="left" link="" sha256sum="61870f8153bee159df8fc2e76e7d32c06e9220f0270602e9eb13684d4f5ee699"/>
+  </node>
+</cherrytree>

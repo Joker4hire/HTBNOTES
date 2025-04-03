@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="26" master_id="0" name="Exploitation" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1743256549" ts_lastsave="1743257043">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Exploitation</rich_text>
+    <rich_text>
+
+
+During the </rich_text>
+    <rich_text family="monospace">Exploitation</rich_text>
+    <rich_text> stage, we look for ways that  these weaknesses can be adapted to our use case to obtain the desired  
+role (i.e., a foothold, escalated privileges, etc.). If we want to get a  reverse shell, we need to modify the PoC to execute the code, 
+so the  target system connects back to us over (ideally) an encrypted connection  to an IP address we specify. 
+Therefore, the preparation of an exploit  is mainly part of the </rich_text>
+    <rich_text family="monospace">Exploitation</rich_text>
+    <rich_text> stage.
+
+
+
+These stages should not be strictly separated from each other, as  they are closely connected. Nevertheless, it is still important to  distinguish which 
+phase we are in and its purpose. Because later, with  much more complex processes and much more information, it is very easy  to lose track of the 
+steps that have been taken, especially if the  penetration test lasts several weeks and covers a massive scope.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Prioritization of Possible Attacks</rich_text>
+    <rich_text>
+
+Once we have found one or two vulnerabilities during the </rich_text>
+    <rich_text family="monospace">Vulnerability Assessment</rich_text>
+    <rich_text>  stage that we can apply to our target network/system, 
+we can prioritize  those attacks. Which of those attacks we prioritize higher than the  others depends on the following factors:
+		• Probability of Success
+		• Complexity
+		• Probability of Damage
+
+First, we need to assess the </rich_text>
+    <rich_text family="monospace">probability of successfully</rich_text>
+    <rich_text> executing a particular attack against the target. </rich_text>
+    <rich_text link="webs https://nvd.nist.gov/vuln-metrics/cvss">CVSS Scoring</rich_text>
+    <rich_text> can help us here, using the </rich_text>
+    <rich_text link="webs https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator">NVD calculator</rich_text>
+    <rich_text> better to calculate the specific attacks and their probability of success.
+
+
+</rich_text>
+    <rich_text family="monospace">Complexity</rich_text>
+    <rich_text> represents the effort of exploiting a  specific vulnerability. This is used to estimate how much time, effort,  
+and research is required to execute the attack on the system  successfully. Our experience plays an important role here 
+because if we  are to carry out an attack that we have never used before, this will  logically require much more research 
+and effort since we must understand  the attack and the exploit structure in detail before applying it.
+
+Estimating the </rich_text>
+    <rich_text family="monospace">probability of damage</rich_text>
+    <rich_text> caused by the  execution of an exploit plays a critical role, as we must avoid any  damage to the 
+target systems. Generally, we do not perform DoS attacks  unless our client requires them. Nevertheless, attacking the running  services live 
+with exploits that can cause damage to the software or the  operating system is something that we must avoid at all times.
+
+In addition, we can assign these factors to a personal point system  which will allow the evaluation to be more accurately calculated based  on our skills and knowledge:
+
+Based on the above example, we would prefer the </rich_text>
+    <rich_text family="monospace">remote file inclusion</rich_text>
+    <rich_text> attack. It is easy to prepare and execute and should not cause any damage if approached carefully.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Preparation for the Attack</rich_text>
+    <rich_text>
+
+
+</rich_text>
+    <encoded_png char_offset="476" justification="left" link="" sha256sum="fb6cb7276bdbde2f729f9b3dd78acebb7c33b82f1b348ebfff3c567bb5f44492"/>
+    <encoded_png char_offset="2555" justification="left" link="" sha256sum="2cd91aff472de3726431de9ae0d37f6995f8b5b71f4b82231048f89a7bfc0259"/>
+  </node>
+</cherrytree>

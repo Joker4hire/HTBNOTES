@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="24" master_id="0" name="Information Gathering" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1743170095" ts_lastsave="1743171392">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h1">Information Gathering</rich_text>
+    <rich_text>
+
+
+Once the pre-engagement phase has been completed, and all parties have signed all contractual terms and conditions, 
+the </rich_text>
+    <rich_text family="monospace">information gathering</rich_text>
+    <rich_text>  phase begins. Information gathering is an essential part of any  security assessment. This is the phase in which we gather all available  
+information about the company, its employees and infrastructure, and how  they are organized. Information gathering is the most frequent and  vital phase throughout the penetration testing process, to which we will  return again and again.
+
+
+
+All the steps we take to exploit the vulnerabilities are based on the  information we enumerate about our targets. This phase can be  considered the cornerstone of any 
+penetration test. We can obtain the  necessary information relevant to us in many different ways. However, we  can divide them into the following categories:
+		• Open-Source Intelligence
+		• Infrastructure Enumeration
+		• Service Enumeration
+		• Host Enumeration
+
+
+All four categories should and must be performed by us for each penetration test. This is because the </rich_text>
+    <rich_text family="monospace">information</rich_text>
+    <rich_text>  is the main component that leads us to successful 
+penetration testing  and identifying security vulnerabilities. We can get this information  anywhere, whether on social media, job postings, individual hosts and  
+servers, or even the employees. Information is continually being spread  and shared everywhere.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Open-Source Intelligence</rich_text>
+    <rich_text>
+
+Let's assume that our client wants us to see what information we can  find about his company on the internet. For this purpose, we use what is  
+known as </rich_text>
+    <rich_text family="monospace">Open Source Intelligence</rich_text>
+    <rich_text> (</rich_text>
+    <rich_text family="monospace">OSINT</rich_text>
+    <rich_text>).  OSINT is a process for finding publicly available information on a  target company or individuals 
+that allows the identification of events  (i.e., public and private meetings), external and internal dependencies,  and connections. OSINT uses public 
+(Open-Source) information from  freely available sources to obtain the desired results. We can often  find security-relevant and sensitive information 
+from companies and  their employees. Usually, the people who share such information are  unaware that they are not the only ones who can access it.
+
+
+It is possible to find highly sensitive information such as  passwords, hashes, keys, tokens, and much more that can give us access  to the 
+network within just a few minutes. Repositories on sites like </rich_text>
+    <rich_text link="webs https://github.com/">Github</rich_text>
+    <rich_text>  or other development platforms are often not set up correctly, and  external 
+viewers can see this information. If this type of sensitive  information is found at the onset of testing, the Incident Handling and  Report section of 
+the RoE should describe the procedure for reporting  these types of critical security vulnerabilities. Publicly published  passwords or SSH keys 
+represent a critical security gap if they have not  already been removed or changed. Therefore, our client's administrator  must review this information before we proceed.
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h4">Private and Public SSH Keys</rich_text>
+    <rich_text>
+
+
+
+
+
+Developers often share whole sections of code on </rich_text>
+    <rich_text link="webs https://stackoverflow.com/">StackOverflow</rich_text>
+    <rich_text>  to show other developers a better overview of how their code works to  
+help them solve their problems. This type of information can also be  found very quickly and used against the company. Our task is to find  
+such security holes and have them closed. We can learn much more from  the </rich_text>
+    <rich_text link="webs https://academy.hackthebox.com/course/preview/osint-corporate-recon">OSINT: Corporate Recon</rich_text>
+    <rich_text> module. It shows many different techniques for how we can find such information.
+
+
+
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Infrastructure Enumeration</rich_text>
+    <rich_text>
+
+During the infrastructure enumeration, we try to overview the  company's position on the internet and intranet. For this, we use OSINT  
+and the first active scans. We use services such as DNS to create a map  of the client's servers and hosts and develop an understanding 
+of how  their </rich_text>
+    <rich_text family="monospace">infrastructure</rich_text>
+    <rich_text> is structured. This includes name  servers, mail servers, web servers, cloud instances, and more. We make  
+an accurate list of hosts and their IP addresses and compare them to our  scope to see if they are included and listed.
+
+
+
+
+In this phase, we also try to determine the company's security  measures. The more precise this information is, the easier it will be to  
+disguise our attacks (</rich_text>
+    <rich_text family="monospace">Evasive Testing</rich_text>
+    <rich_text>). But identifying  firewalls, such as web application firewalls, also gives us an excellent  understanding 
+of what techniques could trigger an alarm for our  customer and what methods can be used to avoid that alarm.
+
+
+In this phase, we also try to determine the company's security  measures. The more precise this information is, the easier it will be to  
+disguise our attacks (</rich_text>
+    <rich_text family="monospace">Evasive Testing</rich_text>
+    <rich_text>). But identifying  firewalls, such as web application firewalls, also gives us an excellent  understanding 
+of what techniques could trigger an alarm for our  customer and what methods can be used to avoid that alarm.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Service Enumeration</rich_text>
+    <rich_text>
+
+In service enumeration, we identify services that allow us to  interact with the host or server over the network (or locally, from an  internal perspective).
+Therefore, it is crucial to find out about the  service, what </rich_text>
+    <rich_text family="monospace">version</rich_text>
+    <rich_text> it is, what </rich_text>
+    <rich_text family="monospace">information</rich_text>
+    <rich_text> it provides us, and the </rich_text>
+    <rich_text family="monospace">reason</rich_text>
+    <rich_text>  it can be used. 
+Once we understand the background of what this service  has been provisioned for, some logical conclusions can be drawn to  provide us with several options.
+
+
+Many services have a version history that allows us to identify  whether the installed version on the host or server is actually up to  date or not. This will also help us 
+find security vulnerabilities that  remain with older versions in most cases. Many administrators are afraid  to change applications that work, as it could harm the entire  
+infrastructure. Therefore, administrators often prefer to accept the  risk of leaving one or more vulnerabilities open and maintaining the  functionality instead of closing the security gaps.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Host Enumeration</rich_text>
+    <rich_text>
+
+Once we have a detailed list of the customer's infrastructure, we  examine every single host listed in the scoping document. We try to  identify 
+which </rich_text>
+    <rich_text family="monospace">operating system</rich_text>
+    <rich_text> is running on the host or server, which </rich_text>
+    <rich_text family="monospace">services</rich_text>
+    <rich_text> it uses, which </rich_text>
+    <rich_text family="monospace">versions</rich_text>
+    <rich_text>  of the services, and much more. Again, 
+apart from the active scans, we  can also use various OSINT methods to tell us how this host or server  may be configured.
+
+We can find many different services, such as an FTP server that the  company uses to exchange data between employees and even allows  anonymous access. 
+Even today, there are many hosts and servers that the  manufacturers no longer support. However, vulnerabilities are still  found for these older versions of 
+operating systems and services, which  then remain and endanger our client's entire infrastructure.
+
+
+It does not matter here whether we examine each host or server  externally or internally. However, from the internal perspective, we  will find 
+services that are often not accessible from the outside.  Therefore, many administrators become careless and often consider these  services 
+"secure" because they are not directly accessible from the  internet. Thus, many misconfigurations are often discovered here due to  these 
+assumptions or lax practices. During host enumeration, we try to  determine what role this host or server plays and what network  components it 
+communicates with. In addition, we must also identify  which </rich_text>
+    <rich_text family="monospace">services</rich_text>
+    <rich_text> it uses for this purpose and on which </rich_text>
+    <rich_text family="monospace">ports</rich_text>
+    <rich_text> they are located.
+
+
+During internal host enumeration, which in most cases comes after the successful </rich_text>
+    <rich_text family="monospace">Exploitation</rich_text>
+    <rich_text> of one or more vulnerabilities, we also examine the host or server from the inside. 
+This means we look for sensitive </rich_text>
+    <rich_text family="monospace">files</rich_text>
+    <rich_text>, local </rich_text>
+    <rich_text family="monospace">services</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">scripts</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">applications</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">information</rich_text>
+    <rich_text>, and other things that could be stored on the host. 
+This is also an essential part of the </rich_text>
+    <rich_text family="monospace">Post-Exploitation</rich_text>
+    <rich_text> phase, where we try to exploit and elevate privileges.
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Pillaging</rich_text>
+    <rich_text>
+
+Another essential step is </rich_text>
+    <rich_text family="monospace">Pillaging</rich_text>
+    <rich_text>. After hitting the </rich_text>
+    <rich_text family="monospace">Post-Exploitation</rich_text>
+    <rich_text>  stage, pillaging is performed to collect sensitive information locally  
+on the already exploited host, such as employee names, customer data,  and much more. However, this information gathering 
+only occurs after  exploiting the target host and gaining access to it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</rich_text>
+    <encoded_png char_offset="548" justification="left" link="" sha256sum="f28c44815ce601af722d16ed93f569fd42507d49fb315dc3669874145adde22a"/>
+    <encoded_png char_offset="2978" justification="left" link="" sha256sum="8e23e88d9facaa062c40712c15ee20270830eb8f954f4993bbe3779730a5ebbe"/>
+  </node>
+</cherrytree>

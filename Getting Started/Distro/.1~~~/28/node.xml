@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="28" master_id="0" name="Lateral Movement" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1743418769" ts_lastsave="1743452041">
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h1">Lateral Movement</rich_text>
+    <rich_text>
+
+
+If everything went well and we were able to penetrate the corporate network (</rich_text>
+    <rich_text family="monospace">Exploitation</rich_text>
+    <rich_text>) successfully, gather locally stored information, 
+and escalate our privileges (</rich_text>
+    <rich_text family="monospace">Post-Exploitation</rich_text>
+    <rich_text>), we next enter the </rich_text>
+    <rich_text family="monospace">Lateral Movement</rich_text>
+    <rich_text>  stage. The goal here is that we test what an attacker 
+could do within  the entire network. After all, the main goal is not only to successfully  exploit a publicly available system but also to get sensitive 
+data or  find all ways that an attacker could render the network unusable. One of  the most common examples is </rich_text>
+    <rich_text link="webs https://www.csoonline.com/article/3236183/what-is-ransomware-how-it-works-and-how-to-remove-it.html">ransomware</rich_text>
+    <rich_text>.  If a system in the 
+corporate network is infected with ransomware, it  can spread across the entire network. It locks down all the systems  using various encryption 
+methods, making them unusable for the whole  company until a decryption key is entered.
+
+
+
+
+
+In this stage, we want to test how far we can move manually in the  entire network and what vulnerabilities we can find from the internal  perspective that might be exploited. In doing so, we will again run  through several phases:
+		1. Pivoting
+		2. Evasive Testing
+		3. Information Gathering
+		4. Vulnerability Assessment
+		5. (Privilege) Exploitation
+		6. Post-Exploitation
+
+As seen in the graphic above, we can move to this stage from the </rich_text>
+    <rich_text family="monospace">Exploitation</rich_text>
+    <rich_text> and the </rich_text>
+    <rich_text family="monospace">Post-Exploitation</rich_text>
+    <rich_text>  stage. Sometimes we may not find a direct way to escalate our  
+privileges on the target system itself, but we have ways to move around  the network. This is where </rich_text>
+    <rich_text family="monospace">Lateral Movement</rich_text>
+    <rich_text> comes into play.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Pivoting</rich_text>
+    <rich_text>
+
+In most cases, the system we use will not have the tools to enumerate  the internal network efficiently. Some techniques allow us to use the  exploited host as a proxy 
+and perform all the scans from our attack  machine or VM. In doing so, the exploited system represents and routes  all our network requests sent from our attack machine to the internal  network and its network components.
+
+In this way, we make sure that non-routable networks (and therefore  publicly unreachable) can still be reached. This allows us to scan them  for vulnerabilities and penetrate deeper into the network. This process  is also known as </rich_text>
+    <rich_text family="monospace">Pivoting</rich_text>
+    <rich_text> or </rich_text>
+    <rich_text family="monospace">Tunneling</rich_text>
+    <rich_text>.
+
+An elementary example could be that we have a printer at home that is  not accessible from the Internet, but we can send print jobs from our  home network. 
+If one of the hosts on our home network has been  compromised, it could be leveraged to send these jobs to the printer.  Though this is a simple (and unlikely) 
+example, it illustrates the goal  of </rich_text>
+    <rich_text family="monospace">pivoting</rich_text>
+    <rich_text>, which is to access inaccessible systems via an intermediary system.
+
+
+</rich_text>
+    <rich_text scale="h2">Evasive Testing</rich_text>
+    <rich_text>
+
+Also, at this stage, we should consider whether evasive testing is  part of the assessment scope. There are different procedures for each  tactic, which support us in disguising these requests to not trigger an  internal alarm among the administrators and the blue team.
+
+There are many ways to protect against lateral movement,  including network (micro) </rich_text>
+    <rich_text family="monospace">segmentation</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">threat monitoring</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">IPS</rich_text>
+    <rich_text>/</rich_text>
+    <rich_text family="monospace">IDS</rich_text>
+    <rich_text>, </rich_text>
+    <rich_text family="monospace">EDR</rich_text>
+    <rich_text>,  etc. To bypass these efficiently, we need to 
+understand how they work  and what they respond to. Then we can adapt and apply methods and  strategies that help avoid detection.
+
+
+
+</rich_text>
+    <rich_text scale="h2">Information Gathering</rich_text>
+    <rich_text>
+
+Before we target the internal network, we must first get an </rich_text>
+    <rich_text family="monospace">overview</rich_text>
+    <rich_text>  of which systems and how many can be reached from our system. This  information may already be available to us from 
+the last  post-exploitation stage, where we took a closer look at the settings and  configurations of the system.
+
+</rich_text>
+    <encoded_png char_offset="836" justification="left" link="" sha256sum="439015817a4ce0fd2c6f04d17b8eb7a8b68fa0d5a518b9278b71aee1b4995f9a"/>
+  </node>
+</cherrytree>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="34" master_id="0" name="Linux Structure" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1743525334" ts_lastsave="1743525374">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h2">Philosophy</rich_text>
+    <rich_text>
+
+The Linux philosophy centers on simplicity, modularity, and openness.  It advocates for building small, single-purpose programs that perform  one task well. 
+These programs can be combined in various ways to  accomplish complex operations, promoting efficiency and flexibility.  Linux follows five core principles:
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Components</rich_text>
+    <rich_text>
+
+</rich_text>
+    <encoded_png char_offset="328" justification="left" link="" sha256sum="ccfc8891e3f002cbd79e63bdc191e88846a69225abfffa50864a27c46cc0d210"/>
+  </node>
+</cherrytree>
